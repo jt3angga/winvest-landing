@@ -2,14 +2,20 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a; /* slate-900 */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Font family definitions */
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-parafina-black: var(--font-parafina-black);
+  --font-parafina-bold: var(--font-parafina-bold);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +28,140 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  margin: 0; /* ensure full-bleed hero without default browser margin */
+}
+
+/* Scroll snap container */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Each section snaps */
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Utilities and design tokens used across the landing */
+@layer utilities {
+  /* Font utilities */
+  .font-parafina-black {
+    font-family: var(--font-parafina-black), sans-serif;
+  }
+
+  .font-parafina-bold {
+    font-family: var(--font-parafina-bold), sans-serif;
+  }
+
+  .container-px {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-px {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-px {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .bg-hero {
+    /* Updated gradient to match screenshot: darker blue to lighter blue */
+    background-image: linear-gradient(180deg, #2e5bff 0%, #4a90e2 100%);
+  }
+  .bg-hexagon {
+    background-image: url("/assets/bg-hexagon.png"),
+      linear-gradient(180deg, #ffffff 0%, #f7fbff 80%);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, center;
+    /* Scale hexagon width responsively: min 900px, prefer 90vw, max 1600px */
+    background-size: clamp(900px, 100vw, 1600px) auto, cover;
+  }
+  @media (max-width: 768px) {
+    .bg-hexagon {
+      background-image: url("/assets/bg-hexagon-mobile.png"),
+        linear-gradient(180deg, #ffffff 0%, #f7fbff 85%);
+      background-position: center top, center;
+      /* Mobile: ensure no horizontal offset by matching viewport width */
+      background-size: 100vh auto, cover; /* responsive and centered */
+    }
+  }
+  .bg-candles {
+    /* Candlestick PNG on top of blue gradient */
+    background-image: url("/assets/bg-candles.png"),
+      linear-gradient(182deg, #2b7bff 0%, #70c6ff 100%);
+    background-repeat: no-repeat, no-repeat;
+    /* Shift image left a bit more so right cluster stays visible */
+    background-position: 55% top, center;
+    /* Slightly smaller width to prevent cropping on wide screens */
+    background-size: clamp(1100px, 100vw, 1800px) auto, cover;
+  }
+  @media (max-width: 768px) {
+    .bg-candles {
+      background-image: url("/assets/bg-candles-mobile.png"),
+        linear-gradient(182deg, #2b7bff 0%, #70c6ff 100%);
+      background-position: 62% top, center; /* show more right side on small screens */
+      background-size: clamp(640px, 110vw, 1400px) auto, cover; /* responsive and uncropped */
+    }
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-[#1f6fff] hover:bg-[#1a5ed4] text-white font-semibold px-5 py-3 transition shadow-lg shadow-blue-500/20;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl bg-white text-[#1f6fff] font-semibold px-5 py-3 transition hover:bg-slate-50 border border-blue-200;
+  }
+  .card {
+    @apply rounded-[20px] bg-white/95 backdrop-blur border border-[#E6ECF5] p-6 md:p-10 lg:p-12 shadow-[0_12px_28px_rgba(31,111,255,.12)];
+  }
+  .badge-speech {
+    @apply relative inline-block bg-white text-[#1F6FFF] font-extrabold rounded-[18px] px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,.15)] border border-[#EFF6FD] uppercase tracking-tight;
+    letter-spacing: -0.3px;
+    font-size: clamp(8px, 1.5vw, 18px);
+    line-height: 1.1;
+  }
+}
+
+/* Speech bubble tails */
+.speech-tl::after,
+.speech-tr::after,
+.speech-bl::after,
+.speech-br::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+.speech-tl::after,
+.speech-tr::after {
+  /* tail pointing downward */
+  border-top: 12px solid #ffffff;
+  top: 100%;
+}
+.speech-bl::after,
+.speech-br::after {
+  /* tail pointing upward */
+  border-bottom: 12px solid #ffffff;
+  bottom: 100%;
+}
+.speech-tl::after {
+  left: 24px;
+}
+.speech-tr::after {
+  right: 24px;
+}
+.speech-bl::after {
+  left: 24px;
+}
+.speech-br::after {
+  right: 24px;
 }
