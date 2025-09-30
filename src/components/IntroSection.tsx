@@ -15,7 +15,7 @@ function StoreButtons() {
 
 export default function IntroSection() {
   return (
-    <section id="intro" className="bg-hexagon h-screen flex flex-col items-center lg:items-center overflow-hidden relative pt-6 sm:pt-8">
+    <section id="intro" className="bg-hexagon min-h-[100dvh] flex flex-col items-center lg:items-center overflow-hidden relative pt-6 sm:pt-8">
 
       <div className="container-px mx-auto max-w-[1280px] 2xl:max-w-[1440px] grid lg:grid-cols-2 gap-12 items-center w-full relative">
         <div className="flex flex-col items-center lg:items-start space-y-8 sm:space-y-10 lg:space-y-0">

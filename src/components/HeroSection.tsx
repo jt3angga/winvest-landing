@@ -66,11 +66,11 @@ export default function HeroSection() {
           </div>
 
           {/* Scroll note */}
-          <a href="#intro" className="absolute left-1/2 -translate-x-1/2 bottom-[3%] flex flex-col items-center select-none group">
-            <span className="text-white text-center font-medium text-[24px] leading-[37px] opacity-95 group-hover:opacity-100 transition" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.25)' }}>
+          <a href="#intro" className="absolute left-1/2 -translate-x-1/2 bottom-[2%] flex flex-col items-center select-none group">
+            <span className="text-white text-center font-medium text-[16px] leading-[22px] sm:text-[18px] sm:leading-[28px] opacity-95 group-hover:opacity-100 transition" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.25)' }}>
               scroll ke bawah untuk daftar
             </span>
-            <Image src="/assets/arrow-down.svg" alt="" width={24} height={24} className="mt-1 w-6 h-6 animate-bounce opacity-95 group-hover:opacity-100" />
+            <Image src="/assets/arrow-down.svg" alt="" width={24} height={24} className="mt-1 w-5 h-5 sm:w-6 sm:h-6 animate-bounce opacity-95 group-hover:opacity-100" />
           </a>
         </div>
       </div>

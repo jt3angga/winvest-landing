@@ -44,6 +44,17 @@ section {
   scroll-snap-stop: always;
 }
 
+/* Disable scroll snap on mobile */
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: none;
+  }
+  section {
+    scroll-snap-align: unset;
+    scroll-snap-stop: normal;
+  }
+}
+
 /* Utilities and design tokens used across the landing */
 @layer utilities {
   /* Font utilities */
@@ -72,25 +83,31 @@ section {
     }
   }
 
+  /* Hero gradient background */
   .bg-hero {
-    /* Updated gradient to match screenshot: darker blue to lighter blue */
+    /* Darker blue to lighter blue gradient for hero */
     background-image: linear-gradient(180deg, #2e5bff 0%, #4a90e2 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
+
   .bg-hexagon {
     background-image: url("/assets/bg-hexagon.png"),
       linear-gradient(180deg, #ffffff 0%, #f7fbff 80%);
     background-repeat: no-repeat, no-repeat;
-    background-position: left center, center;
-    /* Scale hexagon width responsively: min 900px, prefer 90vw, max 1600px */
-    background-size: clamp(900px, 100vw, 1600px) auto, cover;
+    background-position: center top, center;
+    /* Always span full viewport width */
+    background-size: 100vw auto, cover;
   }
   @media (max-width: 768px) {
     .bg-hexagon {
       background-image: url("/assets/bg-hexagon-mobile.png"),
-        linear-gradient(180deg, #ffffff 0%, #f7fbff 85%);
+        linear-gradient(180deg, #ffffff 0%, #eaf3ff 35%, #bde2ff 55%, #70c6ff 76%, #2b7bff 100%);
       background-position: center top, center;
       /* Mobile: ensure no horizontal offset by matching viewport width */
-      background-size: 100vh auto, cover; /* responsive and centered */
+      background-size: cover, cover; /* ensure full coverage without gap */
+      background-color: #2b7bff; /* fallback to solid blue to avoid any gap */
     }
   }
   .bg-candles {
@@ -100,15 +117,15 @@ section {
     background-repeat: no-repeat, no-repeat;
     /* Shift image left a bit more so right cluster stays visible */
     background-position: 55% top, center;
-    /* Slightly smaller width to prevent cropping on wide screens */
-    background-size: clamp(1100px, 100vw, 1800px) auto, cover;
+    /* Always span full viewport width */
+    background-size: 100vw auto, cover;
   }
   @media (max-width: 768px) {
     .bg-candles {
       background-image: url("/assets/bg-candles-mobile.png"),
         linear-gradient(182deg, #2b7bff 0%, #70c6ff 100%);
-      background-position: 62% top, center; /* show more right side on small screens */
-      background-size: clamp(640px, 110vw, 1400px) auto, cover; /* responsive and uncropped */
+      background-position: center top, center; /* ensure centered to avoid side gaps */
+      background-size: 100vw auto, cover; /* span full viewport width */
     }
   }
 
