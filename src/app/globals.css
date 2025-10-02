@@ -32,26 +32,13 @@ body {
   margin: 0; /* ensure full-bleed hero without default browser margin */
 }
 
-/* Scroll snap container */
 html {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
-/* Each section snaps */
-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-/* Disable scroll snap on mobile */
-@media (max-width: 768px) {
-  html {
-    scroll-snap-type: none;
-  }
-  section {
-    scroll-snap-align: unset;
-    scroll-snap-stop: normal;
+@media (min-width: 64rem) {
+  #bonus .container-px {
+    padding-bottom: 330px !important;
   }
 }
 
@@ -103,7 +90,14 @@ section {
   @media (max-width: 768px) {
     .bg-hexagon {
       background-image: url("/assets/bg-hexagon-mobile.png"),
-        linear-gradient(180deg, #ffffff 0%, #eaf3ff 35%, #bde2ff 55%, #70c6ff 76%, #2b7bff 100%);
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #eaf3ff 35%,
+          #bde2ff 55%,
+          #70c6ff 76%,
+          #2b7bff 100%
+        );
       background-position: center top, center;
       /* Mobile: ensure no horizontal offset by matching viewport width */
       background-size: cover, cover; /* ensure full coverage without gap */

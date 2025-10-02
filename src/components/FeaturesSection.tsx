@@ -37,8 +37,8 @@ export default function FeaturesSection() {
             <div className="grid grid-cols-[120px_1fr] sm:grid-cols-[160px_1fr] gap-4 sm:gap-6 items-center">
               <Image src="/assets/ic-stack.png" alt="Customized Watchlist" width={160} height={160} className="w-[120px] sm:w-[140px] lg:w-[160px] h-auto mx-auto" />
               <div>
-                <h4 className="text-[#1994FF] font-extrabold text-[18px] sm:text-[20px] md:text-[22px] leading-snug">Advanced Order: Stop Loss & Take Profit</h4>
-                <p className="text-[#1994FF] mt-1 text-[14px] sm:text-[15px]">Kendalikan risiko dan amankan keuntungan otomatis.</p>
+                <h4 className="text-[#1994FF] font-extrabold text-[18px] sm:text-[20px] md:text-[22px] leading-snug">Customized Watchlist</h4>
+                <p className="text-[#1994FF] mt-1 text-[14px] sm:text-[15px]">atur & pantau saham favoritmu sesuai kebutuhan.</p>
               </div>
             </div>
           </div>
